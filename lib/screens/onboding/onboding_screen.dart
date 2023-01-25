@@ -51,23 +51,25 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     radius: 70.0,
                     backgroundImage: AssetImage('assets/images/twitter.jpg'),
                   ),
-                  Text(
+                  const Text(
                     "Kei Kusanagi",
                     style: TextStyle(
                       fontFamily: 'Silkscreen',
                       fontSize: 30.0,
-                      color: Colors.blue.shade400,
+                      color: Colors.white,
                     ),
                   ),
-                  Text(
+                  const Text(
                     "FLUTTER DEVELOPER",
                     style: TextStyle(
                       fontFamily: 'SourceSans3',
                       fontSize: 20.0,
-                      color: Colors.blue.shade400,
+                      color: Colors.white,
                       letterSpacing: 2,
                     ),
                   ),
+                  const SizedBox( height: 20.0,
+                    width: 150.0,),
                   SizedBox(
                     height: 20.0,
                     width: 150.0,
@@ -75,8 +77,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       color: Colors.cyan.shade100,
                     ),
                   ),
-                  NewCard(phone: phone, selectedIcon: Icons.phone_android_rounded,),
-                  NewCard(phone: mail, selectedIcon: Icons.email_outlined,),
+                  NewCard(data: phone, selectedIcon: Icons.phone_android_rounded,),
+                  NewCard(data: mail, selectedIcon: Icons.email_outlined,),
                 ],
               ),
 
@@ -91,7 +93,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   data: "www.linkedin.com/in/JuanCarlosRobledoMorales",
                   version: QrVersions.auto,
                   size: 120.0,
-                  foregroundColor: Colors.blueAccent,
+                  foregroundColor: const Color(0xFF150050),
                   gapless: false,
                   backgroundColor: Colors.white,
                   // embeddedImage: const AssetImage('assets/images/linkedin.png'),
@@ -109,29 +111,34 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 }
 
 class NewCard extends StatelessWidget {
+
   const NewCard({
     Key? key,
-    required this.phone,
+    required this.data,
     required this.selectedIcon,
   }) : super(key: key);
 
-  final String phone;
+  final String data;
   final selectedIcon;
+
+
 
   @override
   Widget build(BuildContext context) {
+    String _mail='kei.kusanagi.99@gmail.com';
+    String _phone= '+52 55 55 55 55 55';
     return Card(
       margin: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
       child: ListTile(
         leading: Icon(
           selectedIcon,
-          color: Colors.cyan.shade400,
+          color: Color(0xFFFB2576),
         ),
         title: Center(
 
-          child: Text(phone,
-              style: TextStyle(
-                color: Colors.blue.shade400,
+          child: Text(data,
+              style: const TextStyle(
+                color: Color(0xFF150050),
                 fontFamily: 'SourceSans3',
                 fontSize: 17.0,
 
@@ -140,11 +147,24 @@ class NewCard extends StatelessWidget {
         trailing: IconButton(
           alignment: Alignment.topRight,
           iconSize: 15.0,
-          icon: const Icon(Icons.content_copy),
+          icon: const Icon(Icons.content_copy, color: Color(0xFF150050),),
           onPressed: () {
-            Clipboard.setData(ClipboardData(text: phone));
-            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('Phone copied to clipboard'),
-            ));
+            Clipboard.setData(ClipboardData(text: data));
+            ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(data== _phone? 'Phone is copied to clipboard': 'Mail is copied to clipboard'),
+
+                  // content: Text('$data Copied to clipboard'),
+                  backgroundColor: const Color(0xFF3F0071),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10),
+                    ),
+                  ),
+
+            ),
+            );
           },
         ),
       ),
