@@ -1,16 +1,3 @@
 # rive_animation
 
-A new Flutter project.
-
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Emulator_-_Build-an-Animated-App-with-Rive-and-Flutter-Starting_202](https://user-images.githubusercontent.com/93227096/214460345-a512c48b-194b-4af7-a78b-9ea182bc3c49.gif)
